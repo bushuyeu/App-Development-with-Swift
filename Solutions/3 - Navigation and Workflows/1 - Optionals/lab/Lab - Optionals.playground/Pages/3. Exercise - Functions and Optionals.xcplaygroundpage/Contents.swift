@@ -34,28 +34,42 @@ print(checkAge("18"))
 var prices = ["Chips": 2.99, "Donuts": 1.89, "Juice": 3.99, "Apple": 0.50, "Banana": 0.25, "Broccoli": 0.99]
 var stock = ["Chips": 4, "Donuts": 0, "Juice": 12, "Apple": 6, "Banana": 6, "Broccoli": 3, "Pineapple": 1]
 
-func checkItemPrice(for itemName: String) -> Double? {
-    if let itemQuantity = stock[itemName] {
-        if itemQuantity > 0 {
-            if let itemPrice = prices[itemName] {
-                print("$\(itemPrice) per ounce")
-                return itemPrice
-            } else {
-                print("The price is not set for the item")
-                return nil
-            }
-        } else {
-            print("the item is out of stock")
-            return nil
-        }
-    } else {
-        print("We don't sell this item")
-        return nil
-    }
+//func checkItemPrice(for itemName: String) -> Double? {
+//    if let itemQuantity = stock[itemName] {
+//        if itemQuantity > 0 {
+//            if let itemPrice = prices[itemName] {
+//                print("$\(itemPrice) per ounce")
+//                return itemPrice
+//            } else {
+//                print("The price is not set for the item")
+//                return nil
+//            }
+//        } else {
+//            print("the item is out of stock")
+//            return nil
+//        }
+//    } else {
+//        print("We don't sell this item")
+//        return nil
+//    }
+//}
+
+func checkItemQuantity(for itemName: String) -> Int? {
+                return stock[itemName]
 }
 
-checkItemPrice(for: "Donuts")
-checkItemPrice(for: "Apple")
-checkItemPrice(for: "Appe")
+func checkItemPrice( for itemName: String ) -> Double? {
+    guard let quantity = checkItemQuantity(for: itemName), quantity > 0 else {
+        return nil
+    }
+    return prices[itemName]
+}
+
 checkItemPrice(for: "Pineapple")
+checkItemPrice(for: "Apple")
+
+//checkItemPrice(for: "Donuts")
+//checkItemPrice(for: "Apple")
+//checkItemPrice(for: "Appe")
+//checkItemPrice(for: "Pineapple")
 //: [Previous](@previous)  |  page 3 of 6  |  [Next: App Exercise - Food Functions](@next)
